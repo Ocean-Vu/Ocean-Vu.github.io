@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CV - Bien Ngoc Vu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        body {
+            background-color: #F8F7F4;
+            color: #3C3C3C;
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            left: -0.625rem;
+            top: 0;
+            background-color: #A8A29E; 
+            border: 3px solid #F8F7F4;
+        }
+        .timeline-item.active::before {
+            background-color: #50B83C;
+        }
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .details-content.open {
+            max-height: 1000px;
+        }
+        .stat-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold text-stone-700">BIEN NGOC VU</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#summary" class="text-stone-600 hover:bg-stone-200 hover:text-stone-800 px-3 py-2 rounded-md text-sm font-medium">Overview</a>
+                        <a href="#skills" class="text-stone-600 hover:bg-stone-200 hover:text-stone-800 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#experience" class="text-stone-600 hover:bg-stone-200 hover:text-stone-800 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#contact" class="text-stone-600 hover:bg-stone-200 hover:text-stone-800 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Hero Section -->
+        <section id="summary" class="text-center mb-20">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800 tracking-tight">BIEN NGOC VU</h1>
+            <p class="mt-4 max-w-4xl mx-auto text-lg text-stone-600">
+                Leveraging 2+ years as a Meta Marketing Pro, I offer strong product expertise (Meta SBG) combined with experience in operational planning and data analysis. This portfolio showcases a proven ability to drive team performance and management, demonstrating my readiness to transition from an Individual Contributor to an Operations Team Leader.
+            </p>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="stat-card bg-blue-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <h3 class="font-bold text-blue-900 text-lg">Meta Expertise & Performance</h3>
+                    <p class="text-sm text-stone-600 mt-2">Strong foundation in product knowledge and internal systems, proven by driving revenue growth and achieving KPIs.</p>
+                </div>
+                 <div class="stat-card bg-green-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <h3 class="font-bold text-green-900 text-lg">Process & Compliance Leadership</h3>
+                    <p class="text-sm text-stone-600 mt-2">Utilizing operational experience to negotiate, coordinate cross-departmentally, and ensure strict adherence to quality and safety standards.</p>
+                </div>
+                 <div class="stat-card bg-orange-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <h3 class="font-bold text-orange-900 text-lg">Data-Driven Performance Coaching</h3>
+                    <p class="text-sm text-stone-600 mt-2">Proficient in data analysis to manage human resources, using performance metrics to make strategic decisions and optimize team direction.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Achievements Dashboard -->
+        <section class="mb-20">
+             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <div class="p-4 bg-green-100 rounded-full mb-4">
+                        <span class="text-3xl">📈</span>
+                    </div>
+                    <span class="text-5xl font-bold text-green-600">100%+</span>
+                    <p class="mt-2 text-stone-600 font-semibold">Revenue Growth</p>
+                    <p class="text-sm text-stone-500">Consistently over the past year</p>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <div class="p-4 bg-orange-100 rounded-full mb-4">
+                       <span class="text-3xl">🏆</span>
+                    </div>
+                    <span class="text-4xl font-bold text-orange-600">Tier 2 Uplift</span>
+                    <p class="mt-2 text-stone-600 font-semibold">Revenue Spiff</p>
+                    <p class="text-sm text-stone-500">Sole Recipient in Q1 2025</p>
+                </div>
+                 <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <div class="p-4 bg-blue-100 rounded-full mb-4">
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <span class="text-5xl font-bold text-blue-600">Top</span>
+                    <p class="mt-2 text-stone-600 font-semibold">Performer</p>
+                    <p class="text-sm text-stone-500">High ranking in key metrics</p>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                    <div class="p-4 bg-purple-100 rounded-full mb-4">
+                        <span class="text-3xl">💼</span>
+                    </div>
+                    <span class="text-4xl font-bold text-purple-600">Success</span>
+                    <p class="mt-2 text-stone-600 font-semibold">Story</p>
+                    <p class="text-sm text-stone-500">Selected and recognized by Meta</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-stone-800 mb-12">Core Competencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-lg text-stone-700 mb-2">Technical & Analytical</h3>
+                    <ul class="list-disc list-inside text-stone-600 space-y-1 text-sm">
+                        <li>Data Analysis: <a href="#" class="text-blue-600 hover:underline" target="_blank">SQL</a>, Tableau</li>
+                        <li>Customer Relationship Mgt: CRM</li>
+                        <li>Data Visualization: Excel, <a href="#" class="text-blue-600 hover:underline" target="_blank">Google Sheets</a></li>
+                        <li>Project Management: PM Tools</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-lg text-stone-700 mb-2">Operations & Compliance</h3>
+                    <ul class="list-disc list-inside text-stone-600 space-y-1 text-sm">
+                        <li>Cross-departmental Coordination (QA/BI)</li>
+                        <li>Quality Standard Compliance</li>
+                        <li>Progress Monitoring & Reporting</li>
+                        <li>Negotiation with Partners & Contractors</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-lg text-stone-700 mb-2">Leadership & Coaching</h3>
+                    <ul class="list-disc list-inside text-stone-600 space-y-1 text-sm">
+                        <li>Data-Driven Performance Coaching</li>
+                        <li>Team Direction Optimization</li>
+                        <li>Human Resources Management</li>
+                        <li>Building Successful Case Studies</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-lg text-stone-700 mb-2">Languages & Certifications</h3>
+                     <ul class="list-disc list-inside text-stone-600 space-y-1 text-sm">
+                        <li>Bilingual: English, Vietnamese</li>
+                        <li>Quality Auditor and Controller</li>
+                        <li>Integrated Management System ISO</li>
+                        <li>Bachelor of Science in Physics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section id="experience" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-stone-800 mb-12">Career Journey</h2>
+            <div id="timeline-container" class="relative border-l-2 border-stone-300 ml-3 py-4">
+                
+                <div class="mb-8 ml-8 timeline-item" data-timeline-index="0">
+                    <div class="cursor-pointer timeline-header">
+                        <h3 class="text-xl font-bold text-stone-800">Meta Marketing Pro</h3>
+                        <p class="text-stone-600">CNX CVG Malaysia | 02/2023 - Present</p>
+                    </div>
+                    <div class="details-content">
+                        <ul class="mt-4 list-disc list-inside text-stone-600 space-y-2 text-sm">
+                            <li>Consistently achieved over <strong>100%+</strong> revenue growth targets over the past year.</li>
+                            <li>Sole recipient of the <strong>Tier 2 Revenue Uplift spiff (Q1 2025)</strong>, increasing from 109% to 136%.</li>
+                            <li>Consistently achieved <strong>Top Performer</strong> ranking for key metrics (BCA/BCR, Solution Engineer Recommendation Adherence).</li>
+                            <li>Developed successful <strong>business case studies</strong> selected by Meta.</li>
+                            <li>Awarded **"Best Advertiser Relationship"** for managing a portfolio of SMB clients.</li>
+                        </ul>
+                        <div class="mt-6 chart-container w-full max-w-lg mx-auto h-64 md:h-80 relative">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8 ml-8 timeline-item" data-timeline-index="1">
+                    <div class="cursor-pointer timeline-header">
+                        <h3 class="text-xl font-bold text-stone-800">Meta Technical Support</h3>
+                        <p class="text-stone-600">CNX CVG Malaysia | 12/2022 - 02/2023</p>
+                    </div>
+                    <div class="details-content">
+                        <ul class="mt-4 list-disc list-inside text-stone-600 space-y-2 text-sm">
+                            <li>Supported advertisers for Meta SBG & GBG, resolving technical queries and providing product knowledge.</li>
+                            <li>Gather, analyze and utilize relevant data to improve the overall user experience. Recognize trends, patterns to escalate issues to the Global Team.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8 ml-8 timeline-item" data-timeline-index="2">
+                    <div class="cursor-pointer timeline-header">
+                        <h3 class="text-xl font-bold text-stone-800">Freelancer</h3>
+                        <p class="text-stone-600">09/2019 - 09/2022</p>
+                    </div>
+                     <div class="details-content">
+                        <ul class="mt-4 list-disc list-inside text-stone-600 space-y-2 text-sm">
+                           <li>Built sales through affiliate marketing and community networking.</li>
+                           <li>Organized events connecting the Vietnamese community, growing customer base for food & beverage business.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-8 ml-8 timeline-item" data-timeline-index="3">
+                    <div class="cursor-pointer timeline-header">
+                        <h3 class="text-xl font-bold text-stone-800">Project Planning</h3>
+                        <p class="text-stone-600">Fire Fighting and Prevention VN | 03/2017 - 09/2019</p>
+                    </div>
+                    <div class="details-content">
+                        <ul class="mt-4 list-disc list-inside text-stone-600 space-y-2 text-sm">
+                            <li>Coordinated M&E projects with Exyte contractor (M+W Group), ensuring compliance with quoting, quality, and safety standards.</li>
+                            <li>Prepared weekly reports, negotiated with contractors, tracked timelines, and prepared client reports.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8 ml-8 timeline-item" data-timeline-index="4">
+                    <div class="cursor-pointer timeline-header">
+                        <h3 class="text-xl font-bold text-stone-800">Research Intern</h3>
+                        <p class="text-stone-600">Centre for Applications of Nuclear Technique in Industry | 05/2015 - 02/2016</p>
+                    </div>
+                    <div class="details-content">
+                        <ul class="mt-4 list-disc list-inside text-stone-600 space-y-2 text-sm">
+                            <li>Researched and developed the 4th-generation Computed Tomography using image reconstruction algorithms.</li>
+                            <li>Applied Monte Carlo N-Particles software to simulate physical processes of particle interaction.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+             <h2 class="text-2xl font-bold text-stone-800 mb-4">Connect With Me</h2>
+             <div class="flex justify-center items-center space-x-6">
+                <p class="text-stone-600">📧 vungocsea@gmail.com</p>
+                <p class="text-stone-600">📞 +60 122-447-292</p>
+                <a href="https://github.com/Ocean-Vu" target="_blank" class="text-blue-600 hover:underline">🔗 GitHub Portfolio</a>
+             </div>
+             <div class="mt-8 text-stone-500">
+                <p>&copy; 2025 Bien Ngoc Vu. All Rights Reserved.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Timeline Accordion
+            const timelineContainer = document.getElementById('timeline-container');
+            const timelineItems = timelineContainer.querySelectorAll('.timeline-item');
+
+            timelineContainer.addEventListener('click', function(e) {
+                const header = e.target.closest('.timeline-header');
+                if (!header) return;
+
+                const currentItem = header.parentElement;
+                const content = currentItem.querySelector('.details-content');
+                const index = parseInt(currentItem.dataset.timelineIndex, 10);
+
+                const isOpen = content.classList.contains('open');
+
+                timelineItems.forEach((item, i) => {
+                    const itemContent = item.querySelector('.details-content');
+                    if (i !== index && itemContent.classList.contains('open')) {
+                        itemContent.classList.remove('open');
+                        item.classList.remove('active');
+                    }
+                });
+
+                if (isOpen) {
+                    content.classList.remove('open');
+                    currentItem.classList.remove('active');
+                } else {
+                    content.classList.add('open');
+                    currentItem.classList.add('active');
+                }
+            });
+
+            // Automatically open the first timeline item
+            if (timelineItems.length > 0) {
+                timelineItems[0].querySelector('.details-content').classList.add('open');
+                timelineItems[0].classList.add('active');
+            }
+
+
+            // Performance Chart
+            // Register the datalabels plugin
+            Chart.register(ChartDataLabels);
+            
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q3 \'24', 'Q4 \'24', 'Q1 \'25', 'Q2 \'25', 'Q3 \'25'],
+                    datasets: [{
+                        label: 'Performance vs Target (%)',
+                        data: [117, 113, 136, 102, 99],
+                        backgroundColor: 'rgba(74, 144, 226, 0.6)',
+                        borderColor: 'rgba(74, 144, 226, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 90,
+                            max: 145, // Add space for top label
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Revenue Performance Last 5 Quarters',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Exceeded target by: ${context.raw - 100}%`;
+                                }
+                            }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            color: '#3C3C3C',
+                            font: {
+                                weight: 'bold'
+                            },
+                            formatter: function(value, context) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+

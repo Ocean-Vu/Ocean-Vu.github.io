@@ -46,7 +46,7 @@
     </style>
 </head>
 <body class="antialiased">
-    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
@@ -72,9 +72,10 @@
                 Leveraging 2+ years as a Meta Marketing Pro, I offer strong product expertise (Meta SBG) combined with experience in operational planning and data analysis. This portfolio showcases a proven ability to drive team performance and management, demonstrating my readiness to transition from an Individual Contributor to an Operations Team Leader.
             </p>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="stat-card bg-blue-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                <div id="showProjectBtn" class="stat-card bg-blue-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center h-full cursor-pointer">
                     <h3 class="font-bold text-blue-900 text-lg">Meta Expertise & Performance</h3>
                     <p class="text-sm text-stone-600 mt-2">Strong foundation in product knowledge and internal systems, proven by driving revenue growth and achieving KPIs.</p>
+                    <span class="mt-auto text-xs text-blue-700 font-semibold pt-2">Click to view project details</span>
                 </div>
                  <div class="stat-card bg-green-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
                     <h3 class="font-bold text-green-900 text-lg">Process & Compliance Leadership</h3>
@@ -90,7 +91,7 @@
         <!-- Key Achievements Dashboard -->
         <section class="mb-20">
              <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                <div id="showChartBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center cursor-pointer">
                     <div class="p-4 bg-green-100 rounded-full mb-4">
                         <span class="text-3xl">📈</span>
                     </div>
@@ -114,7 +115,7 @@
                     <p class="mt-2 text-stone-600 font-semibold">Performer</p>
                     <p class="text-sm text-stone-500">High ranking in key metrics</p>
                 </div>
-                <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                <div id="showStoryBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center cursor-pointer">
                     <div class="p-4 bg-purple-100 rounded-full mb-4">
                         <span class="text-3xl">💼</span>
                     </div>
@@ -124,6 +125,35 @@
                 </div>
             </div>
         </section>
+
+        <!-- Chart Modal -->
+        <div id="chartModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-8 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-1/2">
+                <button id="closeChartBtn" class="absolute top-2 right-4 text-stone-500 hover:text-stone-800 text-3xl font-bold">&times;</button>
+                <div class="chart-container w-full h-80 md:h-96 relative">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Success Story Modal -->
+        <div id="storyModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
+                <button id="closeStoryBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="storyImage" src="" alt="Success Story Slide" class="w-full h-auto rounded-lg">
+                <button id="prevStoryBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full w-10 h-10 text-2xl">‹</button>
+                <button id="nextStoryBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full w-10 h-10 text-2xl">›</button>
+            </div>
+        </div>
+        
+        <!-- Project Modal -->
+        <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
+                <button id="closeProjectBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="projectImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+
 
         <!-- Skills Section -->
         <section id="skills" class="mb-20">
@@ -187,7 +217,7 @@
                             <li>Awarded **"Best Advertiser Relationship"** for managing a portfolio of SMB clients.</li>
                         </ul>
                         <div class="mt-6 chart-container w-full max-w-lg mx-auto h-64 md:h-80 relative">
-                            <canvas id="performanceChart"></canvas>
+                            <canvas id="timelineChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -310,75 +340,154 @@
                 timelineItems[0].querySelector('.details-content').classList.add('open');
                 timelineItems[0].classList.add('active');
             }
-
-
-            // Performance Chart
-            // Register the datalabels plugin
-            Chart.register(ChartDataLabels);
             
-            const ctx = document.getElementById('performanceChart').getContext('2d');
-            const performanceChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Q3 \'24', 'Q4 \'24', 'Q1 \'25', 'Q2 \'25', 'Q3 \'25'],
-                    datasets: [{
-                        label: 'Performance vs Target (%)',
-                        data: [117, 113, 136, 102, 99],
-                        backgroundColor: 'rgba(74, 144, 226, 0.6)',
-                        borderColor: 'rgba(74, 144, 226, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            min: 90,
-                            max: 145, // Add space for top label
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%'
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        title: {
-                            display: true,
-                            text: 'Revenue Performance Last 5 Quarters',
-                            font: {
-                                size: 16
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `Exceeded target by: ${context.raw - 100}%`;
-                                }
-                            }
-                        },
-                        datalabels: {
-                            anchor: 'end',
-                            align: 'top',
-                            color: '#3C3C3C',
-                            font: {
-                                weight: 'bold'
-                            },
-                            formatter: function(value, context) {
-                                return value + '%';
-                            }
+            // Chart Modal Logic
+            const showChartBtn = document.getElementById('showChartBtn');
+            const chartModal = document.getElementById('chartModal');
+            const closeChartBtn = document.getElementById('closeChartBtn');
+
+            showChartBtn.addEventListener('click', () => {
+                chartModal.classList.remove('hidden');
+                chartModal.classList.add('flex');
+            });
+
+            const closeChartModal = () => {
+                chartModal.classList.add('hidden');
+                chartModal.classList.remove('flex');
+            }
+
+            closeChartBtn.addEventListener('click', closeChartModal);
+            chartModal.addEventListener('click', (e) => {
+                if (e.target === chartModal) closeChartModal();
+            });
+
+            // --- Reusable Chart Configuration ---
+            const chartData = {
+                labels: ['Q3 \'24', 'Q4 \'24', 'Q1 \'25', 'Q2 \'25', 'Q3 \'25'],
+                datasets: [{
+                    label: 'Performance vs Target (%)',
+                    data: [117, 113, 136, 102, 99],
+                    backgroundColor: 'rgba(74, 144, 226, 0.6)',
+                    borderColor: 'rgba(74, 144, 226, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 90,
+                        max: 145,
+                        ticks: {
+                            callback: function(value) { return value + '%' }
                         }
                     }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Revenue Performance Last 5 Quarters',
+                        font: { size: 16 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) { return `Exceeded target by: ${context.raw - 100}%`; }
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#3C3C3C',
+                        font: { weight: 'bold' },
+                        formatter: function(value, context) { return value + '%'; }
+                    }
                 }
+            };
+
+            // --- Initialize Charts ---
+            Chart.register(ChartDataLabels);
+            
+            const modalCtx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(modalCtx, { type: 'bar', data: chartData, options: chartOptions });
+
+            const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+            new Chart(timelineCtx, { type: 'bar', data: chartData, options: chartOptions });
+
+            // --- Success Story Modal Logic ---
+            const showStoryBtn = document.getElementById('showStoryBtn');
+            const storyModal = document.getElementById('storyModal');
+            const closeStoryBtn = document.getElementById('closeStoryBtn');
+            const storyImage = document.getElementById('storyImage');
+            const prevStoryBtn = document.getElementById('prevStoryBtn');
+            const nextStoryBtn = document.getElementById('nextStoryBtn');
+
+            const storySlides = [
+                'https://placehold.co/1600x900/8B5CF6/FFFFFF?text=Success+Story+1', // <-- Link ảnh slide 1 của bạn
+                'https://placehold.co/1600x900/3B82F6/FFFFFF?text=Success+Story+2'  // <-- Link ảnh slide 2 của bạn
+            ];
+            
+            let currentStoryIndex = 0;
+
+            function showStorySlide(index) {
+                storyImage.src = storySlides[index];
+            }
+
+            showStoryBtn.addEventListener('click', () => {
+                currentStoryIndex = 0;
+                showStorySlide(currentStoryIndex);
+                storyModal.classList.remove('hidden');
+                storyModal.classList.add('flex');
+            });
+
+            const closeStoryModal = () => {
+                storyModal.classList.add('hidden');
+                storyModal.classList.remove('flex');
+            }
+            
+            closeStoryBtn.addEventListener('click', closeStoryModal);
+            storyModal.addEventListener('click', (e) => {
+                if (e.target === storyModal) closeStoryModal();
+            });
+
+            prevStoryBtn.addEventListener('click', () => {
+                currentStoryIndex = (currentStoryIndex - 1 + storySlides.length) % storySlides.length;
+                showStorySlide(currentStoryIndex);
+            });
+
+            nextStoryBtn.addEventListener('click', () => {
+                currentStoryIndex = (currentStoryIndex + 1) % storySlides.length;
+                showStorySlide(currentStoryIndex);
+            });
+            
+            // --- Project Modal Logic ---
+            const showProjectBtn = document.getElementById('showProjectBtn');
+            const projectModal = document.getElementById('projectModal');
+            const closeProjectBtn = document.getElementById('closeProjectBtn');
+            const projectImage = document.getElementById('projectImage');
+
+            // !!! QUAN TRỌNG: HÃY THAY THẾ ĐƯỜNG LINK DƯỚI ĐÂY !!!
+            projectImage.src = 'URL_TO_YOUR_PROJECT_IMAGE.jpg'; // <-- Link ảnh project của bạn
+
+            showProjectBtn.addEventListener('click', () => {
+                projectModal.classList.remove('hidden');
+                projectModal.classList.add('flex');
+            });
+
+            const closeProjectModal = () => {
+                projectModal.classList.add('hidden');
+                projectModal.classList.remove('flex');
+            };
+
+            closeProjectBtn.addEventListener('click', closeProjectModal);
+            projectModal.addEventListener('click', (e) => {
+                if(e.target === projectModal) closeProjectModal();
             });
         });
     </script>
 </body>
 </html>
-
 

@@ -72,17 +72,16 @@
                 Leveraging 2+ years as a Meta Marketing Pro, I offer strong product expertise (Meta SBG) combined with experience in operational planning and data analysis. This portfolio showcases a proven ability to drive team performance and management, demonstrating my readiness to transition from an Individual Contributor to an Operations Team Leader.
             </p>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div id="showProjectBtn" class="stat-card bg-blue-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center h-full cursor-pointer">
-                    <h3 class="font-bold text-blue-900 text-lg">Meta Expertise & Performance</h3>
+                <div id="showExpertiseBtn" class="stat-card bg-blue-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center h-full cursor-pointer relative">
+                    <h3 class="font-bold text-blue-900 text-lg mt-4">Meta Expertise & Performance</h3>
                     <p class="text-sm text-stone-600 mt-2">Strong foundation in product knowledge and internal systems, proven by driving revenue growth and achieving KPIs.</p>
-                    <span class="mt-auto text-xs text-blue-700 font-semibold pt-2">Click to view project details</span>
                 </div>
-                 <div class="stat-card bg-green-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
-                    <h3 class="font-bold text-green-900 text-lg">Process & Compliance Leadership</h3>
+                 <div id="showProcessBtn" class="stat-card bg-green-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center relative cursor-pointer">
+                    <h3 class="font-bold text-green-900 text-lg mt-4">Process & Compliance Leadership</h3>
                     <p class="text-sm text-stone-600 mt-2">Utilizing operational experience to negotiate, coordinate cross-departmentally, and ensure strict adherence to quality and safety standards.</p>
                 </div>
-                 <div class="stat-card bg-orange-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
-                    <h3 class="font-bold text-orange-900 text-lg">Data-Driven Performance Coaching</h3>
+                 <div id="showCoachingBtn" class="stat-card bg-orange-50/50 p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center relative cursor-pointer">
+                    <h3 class="font-bold text-orange-900 text-lg mt-4">Data-Driven Performance Coaching</h3>
                     <p class="text-sm text-stone-600 mt-2">Proficient in data analysis to manage human resources, using performance metrics to make strategic decisions and optimize team direction.</p>
                 </div>
             </div>
@@ -91,7 +90,7 @@
         <!-- Key Achievements Dashboard -->
         <section class="mb-20">
              <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div id="showChartBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center cursor-pointer">
+                <div id="showChartBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center cursor-pointer relative">
                     <div class="p-4 bg-green-100 rounded-full mb-4">
                         <span class="text-3xl">📈</span>
                     </div>
@@ -99,15 +98,15 @@
                     <p class="mt-2 text-stone-600 font-semibold">Revenue Growth</p>
                     <p class="text-sm text-stone-500">Consistently over the past year</p>
                 </div>
-                <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                <div id="showUpliftBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center relative cursor-pointer">
                     <div class="p-4 bg-orange-100 rounded-full mb-4">
                        <span class="text-3xl">🏆</span>
                     </div>
-                    <span class="text-4xl font-bold text-orange-600">Tier 2 Uplift</span>
+                    <span class="text-4xl font-bold text-orange-600">Tier 3 Uplift</span>
                     <p class="mt-2 text-stone-600 font-semibold">Revenue Spiff</p>
                     <p class="text-sm text-stone-500">Sole Recipient in Q1 2025</p>
                 </div>
-                 <div class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center">
+                 <div id="showPerformerBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center relative cursor-pointer">
                     <div class="p-4 bg-blue-100 rounded-full mb-4">
                         <span class="text-3xl">🎯</span>
                     </div>
@@ -115,7 +114,7 @@
                     <p class="mt-2 text-stone-600 font-semibold">Performer</p>
                     <p class="text-sm text-stone-500">High ranking in key metrics</p>
                 </div>
-                <div id="showStoryBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center cursor-pointer">
+                <div id="showStoryBtn" class="stat-card bg-white p-6 rounded-xl shadow-lg border border-stone-200/50 flex flex-col items-center text-center cursor-pointer relative">
                     <div class="p-4 bg-purple-100 rounded-full mb-4">
                         <span class="text-3xl">💼</span>
                     </div>
@@ -126,7 +125,7 @@
             </div>
         </section>
 
-        <!-- Chart Modal -->
+        <!-- Modals -->
         <div id="chartModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
             <div class="bg-white p-8 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-1/2">
                 <button id="closeChartBtn" class="absolute top-2 right-4 text-stone-500 hover:text-stone-800 text-3xl font-bold">&times;</button>
@@ -136,7 +135,6 @@
             </div>
         </div>
         
-        <!-- Success Story Modal -->
         <div id="storyModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
             <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
                 <button id="closeStoryBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
@@ -146,11 +144,38 @@
             </div>
         </div>
         
-        <!-- Project Modal -->
-        <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+        <div id="expertiseModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
             <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
-                <button id="closeProjectBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
-                <img id="projectImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
+                <button id="closeExpertiseBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="expertiseImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+        
+        <div id="processModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
+                <button id="closeProcessBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="processImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+
+        <div id="coachingModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
+                <button id="closeCoachingBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="coachingImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+
+        <div id="upliftModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
+                <button id="closeUpliftBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="upliftImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+
+        <div id="performerModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-xl shadow-2xl relative w-11/12 md:w-3/4 lg:w-2/3">
+                <button id="closePerformerBtn" class="absolute top-2 right-4 text-white bg-black/30 rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold">&times;</button>
+                <img id="performerImage" src="" alt="Project Details" class="w-full h-auto rounded-lg">
             </div>
         </div>
 
@@ -162,9 +187,9 @@
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="font-bold text-lg text-stone-700 mb-2">Technical & Analytical</h3>
                     <ul class="list-disc list-inside text-stone-600 space-y-1 text-sm">
-                        <li>Data Analysis: <a href="#" class="text-blue-600 hover:underline" target="_blank">SQL</a>, Tableau</li>
+                        <li>Data Analysis: <a href="YOUR_SQL_LINK_HERE" class="text-blue-600 hover:underline" target="_blank">SQL</a>, Tableau</li>
                         <li>Customer Relationship Mgt: CRM</li>
-                        <li>Data Visualization: Excel, <a href="#" class="text-blue-600 hover:underline" target="_blank">Google Sheets</a></li>
+                        <li>Data Visualization: Excel, <a href="YOUR_GOOGLE_SHEETS_LINK_HERE" class="text-blue-600 hover:underline" target="_blank">Google Sheets</a></li>
                         <li>Project Management: PM Tools</li>
                     </ul>
                 </div>
@@ -297,10 +322,16 @@
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const href = this.getAttribute('href');
+                    if (href && href.length > 1) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
                 });
             });
 
@@ -341,27 +372,7 @@
                 timelineItems[0].classList.add('active');
             }
             
-            // Chart Modal Logic
-            const showChartBtn = document.getElementById('showChartBtn');
-            const chartModal = document.getElementById('chartModal');
-            const closeChartBtn = document.getElementById('closeChartBtn');
-
-            showChartBtn.addEventListener('click', () => {
-                chartModal.classList.remove('hidden');
-                chartModal.classList.add('flex');
-            });
-
-            const closeChartModal = () => {
-                chartModal.classList.add('hidden');
-                chartModal.classList.remove('flex');
-            }
-
-            closeChartBtn.addEventListener('click', closeChartModal);
-            chartModal.addEventListener('click', (e) => {
-                if (e.target === chartModal) closeChartModal();
-            });
-
-            // --- Reusable Chart Configuration ---
+            // Reusable Chart Configuration
             const chartData = {
                 labels: ['Q3 \'24', 'Q4 \'24', 'Q1 \'25', 'Q2 \'25', 'Q3 \'25'],
                 datasets: [{
@@ -408,16 +419,50 @@
                 }
             };
 
-            // --- Initialize Charts ---
+            // Initialize Charts
             Chart.register(ChartDataLabels);
-            
             const modalCtx = document.getElementById('performanceChart').getContext('2d');
             new Chart(modalCtx, { type: 'bar', data: chartData, options: chartOptions });
-
             const timelineCtx = document.getElementById('timelineChart').getContext('2d');
             new Chart(timelineCtx, { type: 'bar', data: chartData, options: chartOptions });
 
-            // --- Success Story Modal Logic ---
+            // --- Modal Logic ---
+
+            // Generic function to handle modal
+            function setupModal(buttonId, modalId, closeBtnId, imageId, imageUrl) {
+                const showBtn = document.getElementById(buttonId);
+                const modal = document.getElementById(modalId);
+                const closeBtn = document.getElementById(closeBtnId);
+                
+                showBtn.addEventListener('click', () => {
+                    if (imageId && imageUrl) {
+                        document.getElementById(imageId).src = imageUrl;
+                    }
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+
+                const closeModal = () => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                };
+
+                closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            // Setup all modals
+            setupModal('showChartBtn', 'chartModal', 'closeChartBtn');
+            setupModal('showExpertiseBtn', 'expertiseModal', 'closeExpertiseBtn', 'expertiseImage', 'URL_TO_YOUR_EXPERTISE_IMAGE.jpg');
+            setupModal('showProcessBtn', 'processModal', 'closeProcessBtn', 'processImage', 'URL_TO_YOUR_PROCESS_IMAGE.jpg');
+            setupModal('showCoachingBtn', 'coachingModal', 'closeCoachingBtn', 'coachingImage', 'URL_TO_YOUR_COACHING_IMAGE.jpg');
+            setupModal('showUpliftBtn', 'upliftModal', 'closeUpliftBtn', 'upliftImage', 'URL_TO_YOUR_UPLIFT_IMAGE.jpg');
+            setupModal('showPerformerBtn', 'performerModal', 'closePerformerBtn', 'performerImage', 'URL_TO_YOUR_PERFORMER_IMAGE.jpg');
+
+
+            // --- Success Story Modal Logic (needs special handling for slides) ---
             const showStoryBtn = document.getElementById('showStoryBtn');
             const storyModal = document.getElementById('storyModal');
             const closeStoryBtn = document.getElementById('closeStoryBtn');
@@ -461,30 +506,6 @@
             nextStoryBtn.addEventListener('click', () => {
                 currentStoryIndex = (currentStoryIndex + 1) % storySlides.length;
                 showStorySlide(currentStoryIndex);
-            });
-            
-            // --- Project Modal Logic ---
-            const showProjectBtn = document.getElementById('showProjectBtn');
-            const projectModal = document.getElementById('projectModal');
-            const closeProjectBtn = document.getElementById('closeProjectBtn');
-            const projectImage = document.getElementById('projectImage');
-
-            // !!! QUAN TRỌNG: HÃY THAY THẾ ĐƯỜNG LINK DƯỚI ĐÂY !!!
-            projectImage.src = 'URL_TO_YOUR_PROJECT_IMAGE.jpg'; // <-- Link ảnh project của bạn
-
-            showProjectBtn.addEventListener('click', () => {
-                projectModal.classList.remove('hidden');
-                projectModal.classList.add('flex');
-            });
-
-            const closeProjectModal = () => {
-                projectModal.classList.add('hidden');
-                projectModal.classList.remove('flex');
-            };
-
-            closeProjectBtn.addEventListener('click', closeProjectModal);
-            projectModal.addEventListener('click', (e) => {
-                if(e.target === projectModal) closeProjectModal();
             });
         });
     </script>
